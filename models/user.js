@@ -8,4 +8,4 @@ const UserSchema = new Schema({
   membership_status: { type: Boolean, required: true },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = model("User", UserSchema);
