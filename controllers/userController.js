@@ -77,3 +77,27 @@ exports.logout_post = (req, res, next) => {
     res.redirect("/");
   });
 };
+
+exports.join_club_get = (req, res) => {
+  res.render("join_club_form", {
+    title: "Join club",
+  });
+};
+
+exports.join_club_post = (req, res, next) => {
+  if (req.body.code === "secret") {
+    User.findByIdAndUpdate(res.locals.currentUser, {
+      membership_status: true,
+    }).exec((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  } else {
+    res.render("join_club_form", {
+      title: "Join club",
+      error: "Wrong code!",
+    });
+  }
+};
