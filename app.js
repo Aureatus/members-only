@@ -61,6 +61,7 @@ passport.deserializeUser(function (id, done) {
     done(err, user);
   });
 });
+app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(logger("dev"));
