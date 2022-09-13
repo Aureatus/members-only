@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <% if (locals.currentUser) { %>
+    <h1><%= title %></h1>
+    <form action="join-club" method="post">
+      <label
+        >Passcode
+        <input type="text" name="code" required />
+      </label>
+      <input type="submit" value="Join the club!" />
+    </form>
+    <% if (locals.error) { %> <%= error %> <% } %> <% } else{ %>
+    <h1>Please sign in to see this page.</h1>
+    <% } %>
+  </body>
+</html>
