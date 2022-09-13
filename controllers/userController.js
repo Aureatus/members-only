@@ -62,3 +62,18 @@ exports.login_post = (req, res, next) => {
     failureRedirect: "/login",
   })(req, res, next);
 };
+
+exports.logout_get = (req, res) => {
+  res.render("logout", {
+    title: "Logout",
+  });
+};
+
+exports.logout_post = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
