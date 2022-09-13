@@ -48,3 +48,14 @@ exports.sign_up_post = [
     });
   },
 ];
+
+exports.login_get = (req, res) => {
+  res.render("login_form", {
+    title: "Login",
+  });
+};
+
+exports.login_post = (req, res) => {
+  console.log("test");
+  res.redirect("/");
+};
