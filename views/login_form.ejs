@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="login" method="post">
+      <label
+        >Username
+        <input type="text" name="username" required />
+      </label>
+      <label
+        >Password
+        <input type="password" name="password" required />
+      </label>
+      <input type="submit" value="Login" />
+    </form>
+    <% if (locals.errors && errors.length > 0) { %>
+    <h2>Error:</h2>
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </body>
+</html>
