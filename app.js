@@ -9,6 +9,7 @@ var LocalStrategy = require("passport-local");
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
 var User = require("./models/user");
+const compression = require("compression");
 
 var indexRouter = require("./routes/index");
 var signUpRouter = require("./routes/signUp");
@@ -20,6 +21,7 @@ var becomeAdminRouter = require("./routes/become_admin");
 var deleteMessageRoute = require("./routes/delete_message");
 
 var app = express();
+app.use(compression());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
