@@ -29,12 +29,18 @@ app.use(compression());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+var sess = {
+  secret: "cats",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {},
+};
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true; // serve secure cookies
 }
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(session(sess));
 
 passport.use(
   new LocalStrategy(function verify(username, password, done) {
