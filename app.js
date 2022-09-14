@@ -10,6 +10,7 @@ var session = require("express-session");
 var bcrypt = require("bcryptjs");
 var User = require("./models/user");
 const compression = require("compression");
+const helmet = require("helmet");
 
 var indexRouter = require("./routes/index");
 var signUpRouter = require("./routes/signUp");
@@ -21,6 +22,7 @@ var becomeAdminRouter = require("./routes/become_admin");
 var deleteMessageRoute = require("./routes/delete_message");
 
 var app = express();
+app.use(helmet());
 app.use(compression());
 
 // view engine setup
