@@ -6,6 +6,9 @@
   </head>
   <body>
     <% if (locals.currentUser) { %>
+    <div>
+      <span><a href="/logout">Logout</a></span>
+    </div>
     <a href="/create-message">Create new message!</a>
     <% messages.forEach((message) => { %>
     <div>
@@ -20,6 +23,8 @@
       <% } %>
     </div>
     <% }); %> <% } else{ %>
+    <span><a href="/login">Login</a></span>
+    <span><a href="/sign-up">Sign up</a></span>
     <h1>Sign in to create messages</h1>
     <% } %>
   </body>
