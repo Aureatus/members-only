@@ -6,7 +6,20 @@
   </head>
   <body>
     <% if (locals.currentUser) { %>
-    <a href="/create-message">Create new message!</a> <% } else{ %>
+    <a href="/create-message">Create new message!</a>
+    <% messages.forEach((message) => { %>
+    <div>
+      <hr />
+      <h2><%= message.title %></h2>
+      <p><%= message.body %></p>
+      <% if (Object.keys(message.user).length > 1) { %>
+      <p>
+        <%= `Author: ${message.user.given_name} ${message.user.family_name}` %>
+      </p>
+      <p><sub><%= message.timestamp %></sub></p>
+      <% } %>
+    </div>
+    <% }); %> <% } else{ %>
     <h1>Sign in to create messages</h1>
     <% } %>
   </body>
