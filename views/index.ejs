@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% if (locals.currentUser) { %>
+    <a href="/create-message">Create new message!</a> <% } else{ %>
+    <h1>Sign in to create messages</h1>
+    <% } %>
   </body>
 </html>
