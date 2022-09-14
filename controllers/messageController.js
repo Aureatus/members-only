@@ -48,3 +48,18 @@ exports.messages_list = (req, res) => {
     res.render("index", { title: "Home", messages: list_messages });
   });
 };
+
+exports.delete_message_get = (req, res) => {
+  res.render("delete_message", {
+    title: "Delete message",
+  });
+};
+
+exports.delete_message_post = (req, res, next) => {
+  Message.findByIdAndDelete(req.params.id).exec((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
