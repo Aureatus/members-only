@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <% if (locals.currentUser) { %>
+    <h1><%= title %></h1>
+    <form action="create-message" method="post">
+      <label
+        >Title
+        <input type="text" name="title" required />
+      </label>
+      <label
+        >Content
+        <input type="text" name="text_body" required />
+      </label>
+      <input type="submit" value="Create message" />
+    </form>
+    <% if (locals.errors && errors.length > 0) { %>
+    <h2>Error:</h2>
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } %> <% } else{ %>
+    <h1>Please sign in to create messages</h1>
+    <% } %>
+  </body>
+</html>
