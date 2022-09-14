@@ -34,3 +34,17 @@ exports.create_message_post = [
     });
   },
 ];
+
+exports.messages_list = (req, res) => {
+  let messageQuery = Message.find();
+  if (res.locals.currentUser?.membership_status === true) {
+    messageQuery = Message.find().populate("user");
+  }
+
+  messageQuery.exec((err, list_messages) => {
+    if (err) {
+      return next(err);
+    }
+    res.render("index", { title: "Home", messages: list_messages });
+  });
+};
