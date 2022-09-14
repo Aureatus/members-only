@@ -20,6 +20,9 @@
         <%= `Author: ${message.user.given_name} ${message.user.family_name}` %>
       </p>
       <p><sub><%= message.timestamp %></sub></p>
+      <% if (message.user.admin === true) { %>
+       <a href=<%= `${message._id}/delete`%>>Delete</a>
+      <% } %>
       <% } %>
     </div>
     <% }); %> <% } else{ %>
