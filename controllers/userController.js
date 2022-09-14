@@ -101,3 +101,27 @@ exports.join_club_post = (req, res, next) => {
     });
   }
 };
+
+exports.become_admin_get = (req, res) => {
+  res.render("become_admin_form", {
+    title: "Become an admin!",
+  });
+};
+
+exports.become_admin_post = (req, res, next) => {
+  if (req.body.code === "admin") {
+    User.findByIdAndUpdate(res.locals.currentUser, {
+      admin: true,
+    }).exec((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  } else {
+    res.render("join_club_form", {
+      title: "Join club",
+      error: "Wrong code!",
+    });
+  }
+};
