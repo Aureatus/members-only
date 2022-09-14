@@ -29,6 +29,11 @@ app.use(compression());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+if (app.get("env") === "production") {
+  app.set("trust proxy", 1); // trust first proxy
+  sess.cookie.secure = true; // serve secure cookies
+}
+
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 
 passport.use(
